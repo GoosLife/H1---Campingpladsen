@@ -15,18 +15,21 @@ namespace H1___Campingpladsen
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Get all spots
+            List<Spot> spots = DbController.GetAllSpots();
+
+            // Create data table with spot information
             DataTable table = new DataTable();
+            table.Columns.Add("spot_id");
             table.Columns.Add("spot_name");
+            table.Columns.Add("spot_type");
+            table.Columns.Add("start_date");
 
             DataTable table2 = new DataTable();
 
-
-            // DbController - Get spots
-            List<object[]> spotNames = DbController.SelectByStoredProcedure(StoredProcedures.GetAllSpotNames);
-
-            for (int i = 0; i < spotNames.Count; i++)
+            for (int i = 0; i < spots.Count; i++)
             {
-                table.Rows.Add(spotNames[i]);
+                table.Rows.Add(spots[i].Id, spots[i].Name, spots[i].Type);
             }
 
             string[] spotTypeValues = { "spot_type_name", "id" };

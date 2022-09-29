@@ -10,13 +10,14 @@
             <div class="panel-body">
                 <div class="col-xs-6">
                     Udrejse
-                    <input runat="server" type="date" id="date_start">
+                    <asp:Calendar runat="server" type="date" id="calendar_dateStart" />
                 </div>
                 <div class="col-xs-6">
                     Hjemrejse
-                    <input runat="server" type="date" id="date_end" />
+                    <asp:Calendar runat="server" type="date" id="calendar_dateEnd" />
                 </div>
             </div>
+            <!-- Dropdown menu to choose the types of spots you're looking to book -->
             <div class="panel-body">
                 <div class="col-xs-12">
                 <div class="dropdown">
@@ -33,19 +34,15 @@
         </div>
     </div>
 
-    <!-- Datalist displaying all the available forms for the dates -->
+    <!-- Datalist displaying all the available spots for the selected dates -->
     <asp:DataList ID="datalist_spots" runat="server">
         <ItemTemplate>
-            <table class="table table-hover table-bordered">
-                <!-- Table entries change color on hovering, and are bordered to differentiate between spots -->
-                <tbody>
-                    <tr>
-                        <td>
-                            <%# Eval("spot_name") %>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    <div class="list-group">
+                        <a href="/BookSpot?id=<%# Eval("spot_id") %>&date=<%=calendar_dateStart.SelectedDate %>" class="list-group-item">
+                            <%# Eval("spot_name") %><br />
+                            <%# Eval("spot_type") %>
+                        </a>
+                    </div>
         </ItemTemplate>
     </asp:DataList>
 </asp:Content>

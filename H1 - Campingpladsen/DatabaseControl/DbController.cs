@@ -7,12 +7,90 @@ using System.Web;
 namespace H1___Campingpladsen
 {
     public enum StoredProcedures {
-        GetAllSpotNames,
+        GetSpots_SpotType_Price,
+        GetSpotModel
     }
 
     public class DbController
     {
         public static string ConnectionString = "Server=localhost; Database=Campingpladsen; User Id=campingpladsen_rw; Password=Kode1234!";
+
+        public static Spot GetSpot(int id)
+        {
+            Spot s = new Spot();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSpotModel.ToString(), con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    con.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        s = ReadSpot(reader);
+                    }
+
+                    con.Close();
+                }
+            }
+
+            return s;
+        }
+
+        public static List<Spot> GetAllSpots()
+        {
+            List<Spot> spots = new List<Spot>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSpots_SpotType_Price.ToString(), con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    con.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        //int id = (int)reader["id"];
+                        //string name = (string)reader["spot_name"];
+                        //string type = (string)reader["spot_type_name"];
+                        //decimal pricePeakSeason = (decimal)reader["price_high"];
+                        //decimal priceOffSeason = (decimal)reader["price_low"];
+
+                        //Spot s = new Spot(id, name, type, pricePeakSeason, priceOffSeason);
+                        Spot s = ReadSpot(reader);
+                        spots.Add(s);
+                    }
+
+                    con.Close();
+                }
+            }
+
+            return spots;
+        }
+
+        public static Spot ReadSpot(SqlDataReader reader)
+        {
+            int id = (int)reader["id"];
+            string name = (string)reader["spot_name"];
+            string type = (string)reader["spot_type_name"];
+            decimal pricePeakSeason = (decimal)reader["price_high"];
+            decimal priceOffSeason = (decimal)reader["price_low"];
+
+            Spot s = new Spot(id, name, type, pricePeakSeason, priceOffSeason);
+
+            return s;
+        }
 
         /// <summary>
         /// Call a stored procedure.
