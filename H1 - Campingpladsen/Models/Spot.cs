@@ -7,9 +7,9 @@ namespace H1___Campingpladsen
 {
     public class Spot
     {
-        private int id;
+        private int? id;
 
-        public int Id
+        public int? Id
         {
             get { return id; }
             set { id = value; }
@@ -31,17 +31,17 @@ namespace H1___Campingpladsen
             set { type = value; }
         }
 
-        private decimal pricePeakSeason;
+        private decimal? pricePeakSeason;
 
-        public decimal PricePeakSeason
+        public decimal? PricePeakSeason
         {
             get { return pricePeakSeason; }
             set { pricePeakSeason = value; }
         }
 
-        private decimal priceOffSeason;
+        private decimal? priceOffSeason;
 
-        public decimal PriceOffSeason
+        public decimal? PriceOffSeason
         {
             get { return priceOffSeason; }
             set { priceOffSeason = value; }
@@ -49,6 +49,11 @@ namespace H1___Campingpladsen
 
         public Spot() { }
 
+        public Spot(string name, string type)
+        {
+            this.name = name;
+            this.type = type;
+        }
 
         public Spot(int id, string name, string type, decimal pricePeakSeason, decimal priceOffSeason)
         {

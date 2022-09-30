@@ -24,6 +24,42 @@ namespace H1___Campingpladsen
         protected global::System.Web.UI.WebControls.DataList datalist_spotToBook;
 
         /// <summary>
+        /// text_customerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText text_customerName;
+
+        /// <summary>
+        /// text_customerAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText text_customerAddress;
+
+        /// <summary>
+        /// text_customerPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl text_customerPhone;
+
+        /// <summary>
+        /// text_customerEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl text_customerEmail;
+
+        /// <summary>
         /// number_adults control.
         /// </summary>
         /// <remarks>
@@ -103,5 +139,23 @@ namespace H1___Campingpladsen
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl number_waterParkPassChildren;
+
+        /// <summary>
+        /// btn_makeReservation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_makeReservation;
+
+        /// <summary>
+        /// lbl_invalidForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_invalidForm;
     }
 }

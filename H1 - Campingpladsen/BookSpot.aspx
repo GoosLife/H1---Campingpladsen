@@ -8,7 +8,14 @@
             <%# Eval("spot_price") %>
         </ItemTemplate>
     </asp:DataList>
-
+    Navn:
+    <input type="text" id="text_customerName" runat="server"/>
+    Adresse:
+    <input type="text" id="text_customerAddress" runat="server"/>
+    Telefonnummer:
+    <input type="tel" id="text_customerPhone" runat="server"/>
+    Email:
+    <input type="email" id="text_customerEmail" runat="server" />
     Voksne:
     <input type="number" min="0" max="6" value="0" runat="server" id="number_adults"/>
     Børn:
@@ -28,5 +35,6 @@
     Adgang til badeland, børn:
     <input type="number" min="0" max="6" value="0" runat="server" id="number_waterParkPassChildren" />
 
-    <button class="btn btn-success" runat="server">Book now</button>
+    <asp:Button ID="btn_makeReservation" class="btn btn-success" runat="server" Text="Reservér" OnClick="btn_makeReservation_Click" />
+    <asp:Label runat="server" ID="lbl_invalidForm" class="alert-danger" Visible="false">FEJL - Udfyld venligst hele formen.</asp:Label>
 </asp:Content>
